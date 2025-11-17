@@ -92,6 +92,7 @@ DS-4002-Project3/
 │   └── 00_exploratory_analysis.ipynb     # Jupyter notebook performing EDA on the dataset
 │
 └── README.md                             # Orientation and reproduction instructions (this file)
+```
 
 
 ---
@@ -162,7 +163,7 @@ jupyter lab
 
 The notebook expects the dataset to be located in:
 
-DATA/original_data/
+```DATA/OriginalData/```
 
 - If your folder structure matches the repository, **no changes are required**.
 - If your data is stored elsewhere, update the data-loading cell inside the notebook so that it points to the correct directory before running any analysis.

@@ -1,17 +1,27 @@
 # Data Folder
 ## Purpose
-This folder stores all datasets used in the project. It includes the initial downloaded Navier–Stokes simulation files as well as the final processed data used for model training and evaluation.
+This folder stores all datasets used in the project. It includes the initial downloaded Navier–Stokes simulation files, in the `../DATA/OriginalData` folder, as well as the final processed data, in the `../DATA/PreProcessedData` folder, used for model training and evaluation. The processed dataset removes the vertical velocity channel to reduce dimensionality while retaining the features necessary for reconstruction modeling.
 
 # Metadata
 
 ## Data Summary
-The project uses a 2D turbulent fluid-flow dataset generated from numerical Navier–Stokes simulations. Each file contains a sequence of fluid states at a fixed Reynolds number. Every simulation has the same structure:
-- Shape: (39 time steps, 4 channels, 128 height, 256 width)
-- Channels:
+The project uses a 2D turbulent fluid-flow dataset generated from numerical Navier–Stokes simulations. Each file originally contains four physical channels across 39 time steps. The raw dataset structure is:
+- Shape (raw): (39 time steps, 4 channels, 128 height, 256 width)
+- Raw channels:
     - u: horizontal velocity
     - v: vertical velocity
     - p: pressure
     - ω: vorticity
+
+Exploratory analysis showed that the v channel contributes minimal high-frequency structure and exhibits negligible variation across flow regimes. Because of this limited informational value, the v channel is removed during preprocessing.
+
+The final dataset used for modeling has the structure:
+- Shape (processed): (39 time steps, 3 channels, 128 height, 256 width)
+- Processed channels:
+    - u (horizontal velocity)
+    - p (pressure)
+    - ω (vorticity)
+
 The dataset provides multiple flow regimes across increasing Reynolds numbers to support model generalization. Data are stored in `.npy` format and designed for evaluating machine learning methods that reconstruct or model fluid dynamics.
 
 ## Provenance

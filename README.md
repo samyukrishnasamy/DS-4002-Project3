@@ -156,6 +156,7 @@ From the root of the repository (`DS-4002-Project3`), start Jupyter:
 jupyter notebook
 or
 jupyter lab
+```
 
 ### Step 4: Configure Any Necessary Paths (If Applicable)
 

@@ -1,6 +1,6 @@
 # Data Folder
 ## Purpose
-This folder stores all datasets used in the project. It includes the initial downloaded Navier–Stokes simulation files, in the `/DATA/OriginalData` folder, as well as the final processed data, in the `/DATA/ProcessedData` folder, used for model training and evaluation. The processed dataset removes the vertical velocity channel to reduce dimensionality while retaining the features necessary for reconstruction modeling.
+This folder stores all datasets used in the project. It includes the downloaded Navier–Stokes simulation files, in the `/DATA/NavierStokes` folder, used for model training and evaluation. The preprocessing scripts remove vertical velocity channel to reduce dimensionality while retaining the features necessary for reconstruction modeling.
 
 # Metadata
 
@@ -34,12 +34,13 @@ The dataset is distributed under CC BY 4.0, permitting reuse and modification wi
 There are no human subjects or privacy concerns. The main ethical consideration is accurate reporting of reconstruction results and avoiding claims beyond simulated environments. Dataset usage requires acknowledging simulation limits and refraining from overstating physical realism.
 
 ## Data Dictionary
-Below is the data dictionary describing the different channels in the processed data:
+Below is the data dictionary describing the different channels in the Navier Stokes dataset:
 | Channel | Field | Description                                          | Type    |
 | ------- | ----- | ---------------------------------------------------- | ------- |
 | 0       | u     | horizontal velocity                                  | float32 |
-| 1       | p     | pressure                                             | float32 |
-| 2       | ω     | vorticity                                            | float32 |
+| 1       | v     | vertical velocity                                    | float32 |
+| 2       | p     | pressure                                             | float32 |
+| 3       | ω     | vorticity                                            | float32 |
 
 
 ## Explanatory Plots

@@ -79,27 +79,31 @@ Below is a tree of the current repository structure, including folders and key f
 DS-4002-Project3/
 │
 ├── DATA/
-│   ├── NavierStokes/                  # Processed dataset stored in train/ and test/
-│   │   ├── test/                      # Test set .npy files
-│   │   └── train/                     # Training set .npy files
-│   └── README.md                      # Dataset metadata, description, license, dictionary
+│   ├── NavierStokes/                      # Processed dataset stored in train/ and test/
+│   │   ├── test/                          # Test set .npy files
+│   │   └── train/                         # Training set .npy files
+│   └── README.md                          # Dataset metadata, description, license, dictionary
 │
 ├── OUTPUTS/
-│   ├── 00_exploratory_analysis/       # Plots from the exploratory analysis notebook
+│   ├── 00_exploratory_analysis/           # Plots from the exploratory analysis notebook
 │   │   ├── hf_energy_ratios.png
 │   │   └── mean_std_vs_re.png
 │   │
-│   ├── 01_CAE_pipeline_outputs/       # Intermediate CAE pipeline outputs
-│   │   └── ns_norm_stats.npz          # Normalization stats for CAE/DAE preprocessing
+│   ├── 01_CAE_pipeline_outputs/           # CAE pipeline outputs
+│   │   ├── ns_norm_stats.npz              # Normalization stats for CAE/DAE preprocessing
+│   │   └── videos/                        # Visualizations of CAE reconstruction
 │   │
-│   └── 02_DAE_pipeline_outputs/       # Final comparison & DAE outputs
-│       ├── cae_vs_dae_comparison-visuals.png
-│       └── cae_vs_dae_comparison.md   # Model comparison analysis
+│   └── 02_DAE_pipeline_outputs/           # DAE pipeline outputs
+│   │   ├── ns_norm_stats.npz              # Normalization stats for CAE/DAE preprocessing
+│   │   └── videos/                        # Visualizations of CAE reconstruction
+│   │    
+│   ├──cae_vs_dae_comparison-visuls.md     # Final Comparison Visuals and Statistics
+│   └──cae_vs_dae_comparison.md
 │
 ├── SCRIPTS/
-│   ├── 00_exploratory_analysis.ipynb   # Dataset EDA
-│   ├── 01_CAE_pipeline.ipynb           # Convolutional Autoencoder training & evaluation
-│   └── 02_DAE_pipeline.ipynb           # Diffusion Autoencoder training, sampling & evaluation
+│   ├── 00_exploratory_analysis.ipynb      # Dataset EDA
+│   ├── 01_CAE_pipeline.ipynb              # Convolutional Autoencoder training & evaluation
+│   └── 02_DAE_pipeline.ipynb              # Diffusion Autoencoder training, sampling & evaluation
 │
 ├── .gitignore
 ├── LICENSE
@@ -132,6 +136,7 @@ Open a terminal (or PowerShell on Windows) and run:
 ```bash
 git clone https://github.com/samyukrishnasamy/DS-4002-Project3.git
 cd DS-4002-Project3
+```
 
 ### **Step 1: Set Up the Python Environment**
 
@@ -139,23 +144,29 @@ Create and activate a virtual environment (recommended but not required).
 
 - macOS / Linux:
 
+```bash
 python3 -m venv .venv
 source .venv/bin/activate
-
+```
 
 - Windows (PowerShell):
 
+```bash
 py -m venv .venv
 .venv\Scripts\Activate.ps1
-
+```
 
 Install the required Python packages:
 
+```bash
 pip install -r requirements.txt
+```
 
 ### **Step 2: Obtain the Dataset**
 
-This project uses the **Navier–Stokes 2D Turbulence Dataset**, publicly available on Zenodo.
+This project uses the **Navier–Stokes 2D Turbulence Dataset** which is located in the DATA folder.
+
+If you want to obtain the dataset yourself, here are the following steps:
 
 1. Open the dataset page:  
    [https://zenodo.org/records/13909869  ](https://zenodo.org/records/13909869)
@@ -200,12 +211,9 @@ Inside the notebook **`00_exploratory_analysis.ipynb`**:
    - Compute high-frequency energy ratios for each channel  
    - Generate and save two exploratory plots  
 
-When complete, the notebook will generate the following files:
-
-OUTPUTS/
-└── 00_exploratory_analysis/
-├── hf_energy_ratios.png
-└── mean_std_vs_re.png
+When complete, the notebook will generate the following files in OUTPUTS/00_exploratory_analysis/
+- hf_energy_ratios.png
+- mean_std_vs_re.png
 
 ### **Step A2: Verify EDA Output**
 - confirm that:
@@ -280,6 +288,10 @@ This generates DAE reconstructions and computes comparison metrics.
 
 Final comparison files appear in:
 ```OUTPUTS/02_DAE_pipeline_outputs/```
+- cae_vs_dae_comparison-visuls.md
+- cae_vs_dae_comparison.md
+
+Ensure that the results are similar to confirm that replication was successful.
 
 
 
